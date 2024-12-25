@@ -1,0 +1,88 @@
+{
+  "quizTitle": "General Knowledge Quiz",
+  "mcqs": [
+    {
+      "id": 1,
+      "question": "What is the capital of France?",
+      "options": [
+        "A. Berlin",
+        "B. Madrid",
+        "C. Paris",
+        "D. Rome"
+      ],
+      "correctAnswer": "C. Paris"
+    },
+    {
+      "id": 2,
+      "question": "Who wrote 'Romeo and Juliet'?",
+      "options": [
+        "A. William Shakespeare",
+        "B. Charles Dickens",
+        "C. J.K. Rowling",
+        "D. Mark Twain"
+      ],
+      "correctAnswer": "A. William Shakespeare"
+    },
+    {
+      "id": 3,
+      "question": "What is the largest planet in our solar system?",
+      "options": [
+        "A. Earth",
+        "B. Jupiter",
+        "C. Saturn",
+        "D. Neptune"
+      ],
+      "correctAnswer": "B. Jupiter"
+    },
+    {
+      "id": 4,
+      "question": "What is the chemical symbol for water?",
+      "options": [
+        "A. H2O",
+        "B. CO2",
+        "C. O2",
+        "D. NaCl"
+      ],
+      "correctAnswer": "A. H2O"
+    },
+    {
+      "id": 5,
+      "question": "Which continent is known as the 'Dark Continent'?",
+      "options": [
+        "A. Asia",
+        "B. Africa",
+        "C. South America",
+        "D. Antarctica"
+      ],
+      "correctAnswer": "B. Africa"
+    }
+  ],
+  "truefalse": [
+  {
+    "id": 1,
+    "question": "The Great Wall of China is visible from space.",
+    "correctAnswer": "False"
+  },
+  {
+    "id": 2,
+    "question": "Water boils at 100 degrees Celsius at sea level.",
+    "correctAnswer": "True"
+  },
+  {
+    "id": 3,
+    "question": "Lightning never strikes the same place twice.",
+    "correctAnswer": "False"
+  },
+  {
+    "id": 4,
+    "question": "Sharks are mammals.",
+    "correctAnswer": "False"
+  },
+  {
+    "id": 5,
+    "question": "Mount Everest is the tallest mountain in the world.",
+    "correctAnswer": "True"
+  }
+]
+
+}

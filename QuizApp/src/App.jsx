@@ -1,11 +1,15 @@
 import React from 'react';
 import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
+import QuizViewer from './components/quizviewer/QuizViewer';
 
 function App() {
   return (
     <>
-      <h1>Helo</h1>
+    {/* <Navbar /> */}
+    {/* <QuizViewer /> */}
+    {/* <p className='my-96'></p>
+    <Footer /> */}
     </>
   );
 }
