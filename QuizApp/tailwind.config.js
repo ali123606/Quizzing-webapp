@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./index.html", // Include the HTML file
+    "./src/**/*.{js,jsx,ts,tsx}", // Include JS/JSX files in the src directory
   ],
   theme: {
     extend: {},
   },
   plugins: [
-    require('daisyui'),
+    require('daisyui'), // DaisyUI plugin for Tailwind
   ],
 }
