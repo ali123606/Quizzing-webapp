@@ -1,17 +1,22 @@
-import React from 'react';
-import Navbar from "./components/Navbar";
-import Footer from './components/Footer';
-import QuizViewer from './components/quizviewer/QuizViewer';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import QuizCreator from "./pages/QuizCreator";
+import ImageSolver from "./pages/ImageSolver";
 
-function App() {
+const App = () => {
   return (
-    <>
-    {/* <Navbar /> */}
-    {/* <QuizViewer /> */}
-    {/* <p className='my-96'></p>
-    <Footer /> */}
-    </>
+    <Router>
+      <Header />
+      <div className="container mx-auto my-6">
+        <Routes>
+          <Route path="/" element={<QuizCreator />} />
+          <Route path="/image-solver" element={<ImageSolver />} />
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
   );
-}
+};
 
 export default App;
