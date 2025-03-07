@@ -83,6 +83,87 @@
     "question": "Mount Everest is the tallest mountain in the world.",
     "correctAnswer": "True"
   }
+],
+"fillintheblanks": [
+  {
+    "id": 1,
+    "question": "The Great Wall of China is not _______ from space.",
+    "correctAnswer": "visible"
+  },
+  {
+    "id": 2,
+    "question": "Water boils at _______ degrees Celsius at sea level.",
+    "correctAnswer": "100"
+  },
+  {
+    "id": 3,
+    "question": "Lightning _______ strikes the same place twice.",
+    "correctAnswer": "sometimes"
+  },
+  {
+    "id": 4,
+    "question": "Sharks are not _______, they are fish.",
+    "correctAnswer": "mammals"
+  },
+  {
+    "id": 5,
+    "question": "_______ is the tallest mountain in the world.",
+    "correctAnswer": "Mount Everest"
+  }
+],
+"shortquestions": [
+  {
+    "id": 1,
+    "question": "Why is the Great Wall of China not visible from space?",
+    "correctAnswer": "Because it is too narrow and blends with the natural environment."
+  },
+  {
+    "id": 2,
+    "question": "What temperature does water boil at sea level?",
+    "correctAnswer": "100 degrees Celsius."
+  },
+  {
+    "id": 3,
+    "question": "Can lightning strike the same place twice? Why?",
+    "correctAnswer": "Yes, because tall structures attract multiple strikes."
+  },
+  {
+    "id": 4,
+    "question": "Why are sharks not classified as mammals?",
+    "correctAnswer": "Because they are cold-blooded, lay eggs or give birth to live young without nursing, and breathe through gills."
+  },
+  {
+    "id": 5,
+    "question": "Which is the tallest mountain in the world?",
+    "correctAnswer": "Mount Everest."
+  }
+], 
+"scenariobasedquestions": [
+  {
+    "id": 1,
+    "scenario": "You are an astronaut on a mission to space. A fellow astronaut claims that the Great Wall of China is clearly visible from space. How would you explain to them whether this is true or false?",
+    "expectedAnswer": "I would explain that the Great Wall is too narrow and blends with the surrounding environment, making it difficult to see from space with the naked eye."
+  },
+  {
+    "id": 2,
+    "scenario": "You are hiking in a high-altitude location and trying to boil water. However, you notice that it boils at a lower temperature than 100°C. Why is this happening?",
+    "expectedAnswer": "At higher altitudes, atmospheric pressure is lower, causing water to boil at a lower temperature."
+  },
+  {
+    "id": 3,
+    "scenario": "A friend tells you that lightning never strikes the same place twice. However, you see news about tall buildings getting hit multiple times. How would you respond?",
+    "expectedAnswer": "I would explain that tall objects like skyscrapers and trees often get struck multiple times because they provide the easiest path for lightning to reach the ground."
+  },
+  {
+    "id": 4,
+    "scenario": "Your younger sibling thinks sharks are mammals because they live in water like dolphins and whales. How would you correct them?",
+    "expectedAnswer": "I would explain that sharks are fish because they have gills for breathing, are cold-blooded, and do not nurse their young like mammals."
+  },
+  {
+    "id": 5,
+    "scenario": "Imagine you are a travel guide leading a group of climbers who ask which is the tallest mountain in the world. How would you answer them?",
+    "expectedAnswer": "I would tell them that Mount Everest is the tallest mountain in the world, standing at 8,848 meters above sea level."
+  }
 ]
 
 }

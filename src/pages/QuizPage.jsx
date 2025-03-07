@@ -38,7 +38,80 @@ const QuizPage = () => {
             <McqsViewer key={question.id} question={question} />
           ))}
         </div>
-        ;
+      </>
+    );
+  };
+
+  // show short questions
+  const showFillintheBlanks = () => {
+    return (
+      <>
+        <h1 className="text-2xl font-bold text-left my-6">
+          Fill in the blanks
+        </h1>
+        <div>
+          {sampleQuizData.fillintheblanks.map((question) => (
+            <div key={question.id} className="mb-4">
+              <p>
+                {question.id}. {question.question}
+              </p>
+              <input
+                type="text"
+                placeholder="Enter your answer"
+                className="border-2 border-gray-300 rounded-lg p-2 w-full mt-2"
+              />
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  };
+
+  // show Short questions
+  const showShortQuestions = () => {
+    return (
+      <>
+        <h1 className="text-2xl font-bold text-left my-6">Short Questions</h1>
+        <div>
+          {sampleQuizData.shortquestions.map((question) => (
+            <div key={question.id} className="mb-4">
+              <p>
+                {question.id}. {question.question}
+              </p>
+              <input
+                type="text"
+                placeholder="Enter your answer"
+                className="border-2 border-gray-300 rounded-lg p-2 w-full mt-2"
+              />
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  };
+
+  // show scenario base questions
+  const showScenarioBasedQuestions = () => {
+    return (
+      <>
+        <h1 className="text-2xl font-bold text-left my-6">
+          scenario base questions
+        </h1>
+
+        <div>
+          {sampleQuizData.scenariobasedquestions.map((question) => (
+            <div key={question.id} className="mb-8">
+              <p>
+                {question.id}. {question.scenario}
+              </p>
+              <input
+                type="text"
+                placeholder="Enter your answer"
+                className="border-2 border-gray-300 rounded-lg p-2 w-full mt-2"
+              />
+            </div>
+          ))}
+        </div>
       </>
     );
   };
@@ -49,6 +122,10 @@ const QuizPage = () => {
         {sampleQuizData.quizTitle}
       </h1>
 
+      {questionType === "Scenario-based question" &&
+        showScenarioBasedQuestions()}
+      {questionType === "Short Question" && showShortQuestions()}
+      {questionType === "Fill in the blanks" && showFillintheBlanks()}
       {questionType === "mcqs" && showMcqs()}
       {questionType === "T/F" && showTrueFalse()}
 
