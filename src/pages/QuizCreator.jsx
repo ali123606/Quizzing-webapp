@@ -7,7 +7,7 @@ const QuizCreator = () => {
   const navigate = useNavigate();
 
   const goToQuizPage = () => {
-    navigate("/quizpage");
+    navigate("/quizpage", { state: { questionType } });
   };
 
   return (
