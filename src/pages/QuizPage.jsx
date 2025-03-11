@@ -129,7 +129,7 @@ const QuizPage = () => {
       {questionType === "mcqs" && showMcqs()}
       {questionType === "T/F" && showTrueFalse()}
 
-      <button className="mt-6 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg">
+      <button className="mt-6 px-6 py-2 bg-gray-800 text-white font-semibold rounded-lg">
         Evaluate it
       </button>
     </div>
