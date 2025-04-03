@@ -1,8 +1,16 @@
-# React + Vite
+# 🎯 Quizzing Web App  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dynamic web app that allows users to take quizzes on their chosen topics.  
+It currently supports **multiple-choice questions (MCQs)** and efficiently manages incorrect answers by revisiting them.  
 
-Currently, two official plugins are available:
+### ✨ Features:  
+- Topic-based quiz generation 📚  
+- Interactive MCQs with instant feedback ✅❌  
+- Automatic handling of incorrect answers 🔄  
+- Dynamic quiz fetching for a personalized experience 🚀  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Built with **React** for a smooth and responsive UI.  
+
+---
+  
+🔗 **Stay tuned for more updates!**  
