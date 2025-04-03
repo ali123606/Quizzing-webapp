@@ -5,6 +5,7 @@ import { MdDoNotDisturb } from "react-icons/md";
 import { FaLocationArrow } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaTimesCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const QuizPage = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const QuizPage = () => {
   const [remainingDots, setRemainingDots] = useState(0);
   const [incorrectQuestions, setIncorrectQuestions] = useState([]);
 
+  // handle the dots and question number[to switch question]
   const handleAnswerSelection = (isCorrect, questionData, isRepeated) => {
     if (isRepeated == false) {
       if (!isCorrect) {
@@ -62,8 +64,8 @@ const QuizPage = () => {
                     The quiz should include the following sections:
                     1. Multiple Choice Questions (MCQs)
                     Topic: ${question}
-                    No of mcq: 5
-                    difficulty: medium
+                    No of mcq: 2
+                    difficulty: moderate
                     Please ensure the response strictly follows the provided JSON structure.
                     `;
 
@@ -102,80 +104,83 @@ const QuizPage = () => {
     getQuizData();
   }, [temp]);
 
-  if (loading) {
-    return <p className='text-center mt-10'>Loading quiz...</p>;
-  }
-
-  if (!quizData) {
-    return (
-      <p className='text-center text-red-500'>Failed to load quiz data.</p>
-    );
-  }
-
   return (
-    <div className='p-4 min-h-screen '>
-      <h1 className='text-2xl font-bold text-center mb-6'>
-        {quizData[0].Title}
-      </h1>
-
-      {/* mcqs section */}
-      <section className='min-h-64 relative py-4'>
-        <div className='relative top-0 left-0 flex gap-2'>
-          {/* show dots for remaining mcqs */}
-          <div className={`absolute top-0 left-0 flex `}>
-            <div
-              className={`flex gap-2 opacity-55 duration-300 transition-all bg-black rounded-full p-2 ${
-                remainingDots === 0 ? "hidden" : ""
-              }`}
-            >
-              {[...Array(remainingDots)].map((_, index) => (
-                <span
-                  key={index}
-                  className='bg-green-200 rounded-full w-3 h-3'
-                ></span>
-              ))}
+    <div className='bg-black w-full p-4 min-h-screen'>
+      {loading ? (
+        <p className='text-center pt-10'>Loading quiz...</p>
+      ) : !quizData ? (
+        <p className='text-center text-red-500'>Failed to load quiz data.</p>
+      ) : (
+        <div className='container mx-auto'>
+          {/* {quizData[0].Title} title of the quiz if you want to show */}
+          {/* mcqs section (main) */}
+          <section className='min-h-64 relative py-4 md:pt-24'>
+            <div className='relative top-0 left-0 flex gap-2'>
+              {/* show dots for remaining mcqs */}
+              <div className={`absolute top-0 left-0 flex `}>
+                <div
+                  className={`flex gap-2 opacity-55 duration-300 transition-all bg-gray-700 rounded-full p-2 ${
+                    remainingDots === 0 ? "hidden" : ""
+                  }`}
+                >
+                  {[...Array(remainingDots)].map((_, index) => (
+                    <span
+                      key={index}
+                      className='bg-green-200 rounded-full w-3 h-3'
+                    ></span>
+                  ))}
+                </div>
+                {/* incorrect questions dots */}
+                <div className={`flex gap-2 p-2`}>
+                  {[...Array(incorrectAnswerDots)].map((_, index) => (
+                    <span
+                      key={index}
+                      className='bg-red-200 rounded-full w-3 h-3'
+                    ></span>
+                  ))}
+                </div>
+              </div>
             </div>
-            {/* incorrect questions dots */}
-            <div className={`flex gap-2 p-2`}>
-              {[...Array(incorrectAnswerDots)].map((_, index) => (
-                <span
-                  key={index}
-                  className='bg-red-200 rounded-full w-3 h-3'
-                ></span>
-              ))}
-            </div>
-          </div>
+            {quizData[1]?.questions[qNo]?.questionText !== undefined ? (
+              <Mcqs
+                question={quizData[1]?.questions[qNo]?.questionText}
+                option0={quizData[1]?.questions[qNo]?.options[0]}
+                option1={quizData[1]?.questions[qNo]?.options[1]}
+                option2={quizData[1]?.questions[qNo]?.options[2]}
+                option3={quizData[1]?.questions[qNo]?.options[3]}
+                correctAnswer={quizData[1]?.questions[qNo]?.answer}
+                nextQuestion={handleAnswerSelection}
+                qNo={qNo}
+                isRepeated={false}
+              />
+            ) : incorrectQuestions &&
+              incorrectQuestions.length > 0 &&
+              incorrectAnswerDots !== 0 ? (
+              <Mcqs
+                question={incorrectQuestions[repeatedQNo]?.questionText}
+                option0={incorrectQuestions[repeatedQNo]?.options[0]}
+                option1={incorrectQuestions[repeatedQNo]?.options[1]}
+                option2={incorrectQuestions[repeatedQNo]?.options[2]}
+                option3={incorrectQuestions[repeatedQNo]?.options[3]}
+                correctAnswer={incorrectQuestions[repeatedQNo]?.answer}
+                nextQuestion={handleAnswerSelection}
+                qNo={qNo}
+                isRepeated={true}
+              />
+            ) : (
+              <div>
+                <p>congragulations</p>
+                <Link
+                  to={"/"}
+                  className='btn btn-neutral rounded-full mt-4 no-animation'
+                >
+                  Home
+                </Link>
+              </div>
+            )}
+          </section>
         </div>
-        {quizData[1]?.questions[qNo]?.questionText !== undefined ? (
-          <Mcqs
-            question={quizData[1]?.questions[qNo]?.questionText}
-            option0={quizData[1]?.questions[qNo]?.options[0]}
-            option1={quizData[1]?.questions[qNo]?.options[1]}
-            option2={quizData[1]?.questions[qNo]?.options[2]}
-            option3={quizData[1]?.questions[qNo]?.options[3]}
-            correctAnswer={quizData[1]?.questions[qNo]?.answer}
-            nextQuestion={handleAnswerSelection}
-            qNo={qNo}
-            isRepeated={false}
-          />
-        ) : incorrectQuestions &&
-          incorrectQuestions.length > 0 &&
-          incorrectAnswerDots !== 0 ? (
-          <Mcqs
-            question={incorrectQuestions[repeatedQNo]?.questionText}
-            option0={incorrectQuestions[repeatedQNo]?.options[0]}
-            option1={incorrectQuestions[repeatedQNo]?.options[1]}
-            option2={incorrectQuestions[repeatedQNo]?.options[2]}
-            option3={incorrectQuestions[repeatedQNo]?.options[3]}
-            correctAnswer={incorrectQuestions[repeatedQNo]?.answer}
-            nextQuestion={handleAnswerSelection}
-            qNo={qNo}
-            isRepeated={true}
-          />
-        ) : (
-          <div>congragulations</div>
-        )}
-      </section>
+      )}
     </div>
   );
 };
@@ -201,13 +206,13 @@ const Mcqs = ({
 
   return (
     <div className=''>
-      <div className='mt-36 md:mt-10'>
+      <div className='pt-36 md:pt-10'>
         <h1 className='text-xl font-semibold leading-8'>{question}</h1>
-        <div className='flex flex-col gap-4 mt-4'>
+        <div className='flex flex-col gap-4 pt-4'>
           {[option0, option1, option2, option3].map((option, index) => (
             <button
               key={index}
-              className={`relative btn flex items-center px-4 py-2 border rounded-md 
+              className={`relative btn flex items-center px-4 py-2 border rounded-md no-animation
                   ${selectedOption ? "pointer-events-none" : ""}`}
               onClick={() => checkMcqs(option)}
             >
@@ -221,7 +226,7 @@ const Mcqs = ({
           ))}
         </div>
 
-        <div className='mt-4 flex justify-between opacity-65'>
+        <div className='pt-4 flex justify-between opacity-65'>
           <button className='btn bg-white text-black hover:bg-slate-300 rounded-full cursor-default opacity-0'>
             <MdDoNotDisturb /> Ignore
           </button>

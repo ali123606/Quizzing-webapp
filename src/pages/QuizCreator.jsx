@@ -18,10 +18,10 @@ const QuizCreator = () => {
       </header>
 
       {/* Main Content */}
-      <main className='flex-grow flex flex-col items-center justify-center rounded-md bg-gray-100 p-6'>
+      <main className='flex-grow flex flex-col items-center justify-center  bg-gray-100 p-6'>
         <div className=' p-6 border-4 border-gray-300 rounded-xl max-w-lg w-full'>
           {/* Question Type Selection */}
-          <h2 className='text-lg font-semibold mb-4'>Select Question Type</h2>
+          <h2 className='text-lg font-semibold mb-4'>Question Type</h2>
           <div className='space-y-3'>
             {[
               "mcqs",
@@ -57,12 +57,11 @@ const QuizCreator = () => {
           {/* Question Input */}
           <div className='mt-6'>
             <label className='block text-gray-700 font-semibold mb-2'>
-              Enter Question
+              Enter Topic
             </label>
             <textarea
-              className='w-full p-3 border rounded-lg focus:outline-none bg-transparent text-gray-800 leading-loose'
+              className='w-full p-3 border-2 rounded-lg focus:outline-2 bg-transparent text-gray-800 leading-loose'
               rows='3'
-              placeholder='Type your question here...'
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
             ></textarea>

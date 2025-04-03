@@ -9,7 +9,7 @@ const App = () => {
   return (
     <Router>
       {/* <Header /> */}
-      <div className='container mx-auto my-6'>
+      <div className=''>
         <Routes>
           <Route path='/' element={<QuizCreator />} />
           <Route path='/quizpage' element={<QuizPage />} />
