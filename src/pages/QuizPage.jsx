@@ -18,7 +18,7 @@ const QuizPage = () => {
 
   const [isAnswered, setIsAnswered] = useState(false);
   const [incorrectAnswerDots, setIncorrectAnswerDots] = useState(0);
-  const [remainingDots, setRemainingDots] = useState(0);
+  const [remainingDots, setRemainingDots] = useState(0); // represent the remaining qusion in quizdata[1].questions
   const [incorrectQuestions, setIncorrectQuestions] = useState([]);
 
   // handle the dots and question number[to switch question]
@@ -64,7 +64,7 @@ const QuizPage = () => {
                     The quiz should include the following sections:
                     1. Multiple Choice Questions (MCQs)
                     Topic: ${question}
-                    No of mcq: 2
+                    No of mcq: 6
                     difficulty: moderate
                     Please ensure the response strictly follows the provided JSON structure.
                     `;
@@ -114,7 +114,7 @@ const QuizPage = () => {
         <div className='container mx-auto'>
           {/* {quizData[0].Title} title of the quiz if you want to show */}
           {/* mcqs section (main) */}
-          <section className='min-h-64 relative py-4 md:pt-24'>
+          <section className='min-h-64 relative pt-4 md:pt-8'>
             <div className='relative top-0 left-0 flex gap-2'>
               {/* show dots for remaining mcqs */}
               <div className={`absolute top-0 left-0 flex `}>
@@ -168,11 +168,11 @@ const QuizPage = () => {
                 isRepeated={true}
               />
             ) : (
-              <div>
-                <p>congragulations</p>
+              <div className='flex flex-col items-center justify-center min-h-96'>
+                <p>🎉 congragulations! 🎉</p>
                 <Link
                   to={"/"}
-                  className='btn btn-neutral rounded-full mt-4 no-animation'
+                  className='btn btn-md btn-neutral rounded-full mt-4 no-animation'
                 >
                   Home
                 </Link>
@@ -198,17 +198,19 @@ const Mcqs = ({
 }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [disableButton, setDisableButton] = useState(true);
 
   const checkMcqs = (optionClicked) => {
     setSelectedOption(optionClicked);
     setIsCorrect(optionClicked === correctAnswer);
+    setDisableButton(false);
   };
 
   return (
     <div className=''>
-      <div className='pt-36 md:pt-10'>
-        <h1 className='text-xl font-semibold leading-8'>{question}</h1>
-        <div className='flex flex-col gap-4 pt-4'>
+      <div className='pt-24 md:pt-20 relative min-h-[87vh]'>
+        <h1 className='text-xl font-semibold leading-8 h-16'>{question}</h1>
+        <div className='flex flex-col gap-4 pt-20 md:pt-8'>
           {[option0, option1, option2, option3].map((option, index) => (
             <button
               key={index}
@@ -226,12 +228,19 @@ const Mcqs = ({
           ))}
         </div>
 
-        <div className='pt-4 flex justify-between opacity-65'>
-          <button className='btn bg-white text-black hover:bg-slate-300 rounded-full cursor-default opacity-0'>
+        {/* buttons */}
+        <div className='absolute bottom-0 right-0 flex justify-between opacity-65'>
+          {/* ignore button */}
+          <button
+            className={`btn bg-white text-black hover:bg-slate-300 rounded-full cursor-default opacity-0`}
+          >
             <MdDoNotDisturb /> Ignore
           </button>
+          {/* next button */}
           <button
-            className='btn bg-white text-black hover:bg-slate-300 rounded-full flex justify-center items-center'
+            className={`btn bg-white text-black hover:bg-slate-300 rounded-full flex justify-center items-center ${
+              disableButton ? "hidden opacity-0" : "block"
+            }`}
             onClick={() => {
               nextQuestion(
                 isCorrect,
@@ -243,6 +252,7 @@ const Mcqs = ({
                 isRepeated
               );
               setSelectedOption(null);
+              setDisableButton(true);
             }}
           >
             <span>Next</span> <FaLocationArrow className='rotate-45' />
