@@ -10,7 +10,9 @@ const fetchGeminiResponse = async (inputText) => {
             { contents: [{ parts: [{ text: inputText }] }] },
             { headers: { "Content-Type": "application/json" } }
         );
-        return response.data; // API Response return karega
+        console.log("Full API Response:", response?.data); // Log the full response
+        console.log("Candidates Array:", response?.data?.candidates); // Log the candidates array
+        return response?.data; // Return the API response
     } catch (error) {
         console.error("Error fetching Gemini response:", error);
         return null;

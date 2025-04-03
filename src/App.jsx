@@ -8,15 +8,15 @@ import QuizPage from "./pages/QuizPage";
 const App = () => {
   return (
     <Router>
-      <Header />
-      <div className="container mx-auto my-6">
+      {/* <Header /> */}
+      <div className='container mx-auto my-6'>
         <Routes>
-          <Route path="/" element={<QuizCreator />} />
-          <Route path="/quizpage" element={<QuizPage />} />
-          <Route path="/image-solver" element={<ImageSolver />} />
+          <Route path='/' element={<QuizCreator />} />
+          <Route path='/quizpage' element={<QuizPage />} />
+          <Route path='/image-solver' element={<ImageSolver />} />
         </Routes>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 };

@@ -7,40 +7,40 @@ const QuizCreator = () => {
   const navigate = useNavigate();
 
   const goToQuizPage = () => {
-    navigate("/quizpage", { state: { questionType } });
+    navigate("/quizpage", { state: { question } });
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className='flex flex-col min-h-screen'>
       {/* Header */}
-      <header className="bg-gray-800 text-white text-center py-4 text-lg font-semibold">
+      <header className='text-white text-center py-4 text-lg font-semibold'>
         Quiz Creator
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col items-center justify-center bg-gray-100 p-6">
-        <div className="bg-white shadow-lg p-6 rounded-lg max-w-lg w-full">
+      <main className='flex-grow flex flex-col items-center justify-center rounded-md bg-gray-100 p-6'>
+        <div className=' p-6 border-4 border-gray-300 rounded-xl max-w-lg w-full'>
           {/* Question Type Selection */}
-          <h2 className="text-lg font-semibold mb-4">Select Question Type</h2>
-          <div className="space-y-3">
+          <h2 className='text-lg font-semibold mb-4'>Select Question Type</h2>
+          <div className='space-y-3'>
             {[
               "mcqs",
-              "T/F",
-              "Short Question",
-              "Fill in the blanks",
-              "Scenario-based question",
+              // "T/F",
+              // "Short Question",
+              // "Fill in the blanks",
+              // "Scenario-based question",
             ].map((type) => (
               <label
                 key={type}
-                className="flex items-center space-x-3 cursor-pointer"
+                className='flex items-center space-x-3 cursor-pointer'
               >
                 <input
-                  type="radio"
-                  name="questionType"
+                  type='radio'
+                  name='questionType'
                   value={type}
                   checked={questionType === type}
                   onChange={() => setQuestionType(type)}
-                  className="hidden"
+                  className='hidden'
                 />
                 <div
                   className={`w-5 h-5 rounded-full border-2 ${
@@ -49,20 +49,20 @@ const QuizCreator = () => {
                       : "border-gray-400"
                   }`}
                 ></div>
-                <span className="text-gray-700">{type}</span>
+                <span className='text-gray-700'>{type}</span>
               </label>
             ))}
           </div>
 
           {/* Question Input */}
-          <div className="mt-6">
-            <label className="block text-gray-700 font-semibold mb-2">
+          <div className='mt-6'>
+            <label className='block text-gray-700 font-semibold mb-2'>
               Enter Question
             </label>
             <textarea
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-800"
-              rows="3"
-              placeholder="Type your question here..."
+              className='w-full p-3 border rounded-lg focus:outline-none bg-transparent text-gray-800 leading-loose'
+              rows='3'
+              placeholder='Type your question here...'
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
             ></textarea>
@@ -70,7 +70,7 @@ const QuizCreator = () => {
 
           {/* Generate Button */}
           <button
-            className="mt-4 w-full bg-gray-800 text-white py-2 rounded-lg font-semibold hover:bg-gray-900 transition"
+            className='mt-4 w-full bg-gray-800 text-white py-2 rounded-lg font-semibold hover:bg-gray-900 transition'
             onClick={goToQuizPage}
           >
             Generate
