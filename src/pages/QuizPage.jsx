@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const QuizPage = () => {
   const location = useLocation();
-  const question = location.state?.question;
+  const { question, complexity, noOfQuestions } = location.state || {};
   const [qNo, setQNo] = useState(0);
   const [repeatedQNo, setRepeatedQNo] = useState(0);
   const [quizData, setQuizData] = useState(null);
@@ -64,9 +64,9 @@ const QuizPage = () => {
                     The quiz should include the following sections:
                     1. Multiple Choice Questions (MCQs)
                     Topic: ${question}
-                    No of mcq: 6
-                    difficulty: moderate
-                    Please ensure the response strictly follows the provided JSON structure.
+                    No of mcq: ${noOfQuestions}
+                    complexity: ${complexity}
+                    Please ensure the response strictly follows the provided JSON structure without any additional text or explanations.
                     `;
 
       const result = await fetchGeminiResponse(prompt);
@@ -119,14 +119,14 @@ const QuizPage = () => {
               {/* show dots for remaining mcqs */}
               <div className={`absolute top-0 left-0 flex `}>
                 <div
-                  className={`flex gap-2 opacity-55 duration-300 transition-all bg-gray-700 rounded-full p-2 ${
+                  className={`flex gap-2 opacity-55 duration-300 transition-all bg-gray-600 rounded-full p-2 ${
                     remainingDots === 0 ? "hidden" : ""
                   }`}
                 >
                   {[...Array(remainingDots)].map((_, index) => (
                     <span
                       key={index}
-                      className='bg-green-200 rounded-full w-3 h-3'
+                      className='bg-green-400 rounded-full w-3 h-3'
                     ></span>
                   ))}
                 </div>
@@ -135,7 +135,7 @@ const QuizPage = () => {
                   {[...Array(incorrectAnswerDots)].map((_, index) => (
                     <span
                       key={index}
-                      className='bg-red-200 rounded-full w-3 h-3'
+                      className='bg-red-400 rounded-full w-3 h-3'
                     ></span>
                   ))}
                 </div>
@@ -239,7 +239,7 @@ const Mcqs = ({
           {/* next button */}
           <button
             className={`btn bg-white text-black hover:bg-slate-300 rounded-full flex justify-center items-center ${
-              disableButton ? "hidden opacity-0" : "block"
+              disableButton ? "hidden opacity-0" : "block bg-opacity-65"
             }`}
             onClick={() => {
               nextQuestion(

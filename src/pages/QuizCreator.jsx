@@ -5,9 +5,17 @@ const QuizCreator = () => {
   const [questionType, setQuestionType] = useState("mcqs");
   const [question, setQuestion] = useState(" ");
   const navigate = useNavigate();
+  const [selectedComplexity, setSelectedComplexity] = useState("Low");
+  const [noOfQuestions, setNoOfQuestions] = useState(6);
+
+  const handleComplexityChange = (e) => {
+    setSelectedComplexity(e.target.value);
+  };
 
   const goToQuizPage = () => {
-    navigate("/quizpage", { state: { question } });
+    navigate("/quizpage", {
+      state: { question, complexity: selectedComplexity, noOfQuestions },
+    });
   };
 
   return (
@@ -52,6 +60,63 @@ const QuizCreator = () => {
                 <span className='text-gray-700'>{type}</span>
               </label>
             ))}
+          </div>
+
+          {/* Complexity Selection */}
+          <div className='mt-4'>
+            <h3 className='text-md font-semibold pb-2'>complexity: </h3>
+            <div className='join'>
+              <input
+                className='join-item btn  no-animation'
+                type='radio'
+                name='complexity'
+                aria-label='Low'
+                value='Low'
+                onChange={handleComplexityChange}
+                checked={selectedComplexity === "Low"}
+              />
+              <input
+                className='join-item btn no-animation '
+                type='radio'
+                name='complexity'
+                aria-label='Moderate'
+                value='Moderate'
+                onChange={handleComplexityChange}
+                checked={selectedComplexity === "Moderate"}
+              />
+              <input
+                className='join-item btn no-animation'
+                type='radio'
+                name='complexity'
+                aria-label='High'
+                value='High'
+                onChange={handleComplexityChange}
+                checked={selectedComplexity === "High"}
+              />
+            </div>
+          </div>
+
+          {/* No of questions selection */}
+          <div className='mt-6'>
+            <p className='font-semibold'>No of questions:</p>
+            <div>
+              <input
+                type='range'
+                min={5}
+                max='25'
+                className='range range-xs transition-all duration-100'
+                step='1'
+                value={noOfQuestions}
+                onChange={(e) => setNoOfQuestions(e.target.value)}
+              />
+              <div className='flex w-full justify-between px-2 text-[10px]'>
+                <span>5</span>
+                <span>10</span>
+                <span>15</span>
+                <span>20</span>
+                <span>25</span>
+              </div>
+            </div>
           </div>
 
           {/* Question Input */}
